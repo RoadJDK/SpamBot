@@ -31,6 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Active = new System.Windows.Forms.Label();
+            this.SpamText = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -60,11 +62,30 @@
             this.Active.AutoSize = true;
             this.Active.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Active.ForeColor = System.Drawing.Color.Red;
-            this.Active.Location = new System.Drawing.Point(184, 268);
+            this.Active.Location = new System.Drawing.Point(183, 290);
             this.Active.Name = "Active";
             this.Active.Size = new System.Drawing.Size(69, 26);
             this.Active.TabIndex = 2;
             this.Active.Text = "active";
+            // 
+            // SpamText
+            // 
+            this.SpamText.Location = new System.Drawing.Point(132, 195);
+            this.SpamText.Multiline = true;
+            this.SpamText.Name = "SpamText";
+            this.SpamText.Size = new System.Drawing.Size(180, 58);
+            this.SpamText.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(144, 256);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(158, 17);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "\"$\" for random numbers";
             // 
             // SpamBot
             // 
@@ -72,6 +93,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(476, 424);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.SpamText);
             this.Controls.Add(this.Active);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -89,6 +112,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Active;
+        private System.Windows.Forms.TextBox SpamText;
+        private System.Windows.Forms.Label label3;
     }
 }
 

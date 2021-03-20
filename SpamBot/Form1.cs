@@ -44,14 +44,28 @@ namespace SpamBot
 
         private void StartSpaming()
         {
+            var output = GetSpamInfo();
+            SendKeys.Send(output);
+            SendKeys.Send("{Enter}");
+        }
+
+        private string GetSpamInfo() {
+            var input = SpamText.Text;
             var rnd = new Random();
             var builder = new StringBuilder();
-            for (var i = 0; i < rnd.Next(2, 16);i++)
+            
+            if (input.Equals("$") || input.Equals(""))
             {
-                builder.Append(rnd.Next(9));
+                for (var i = 0; i < rnd.Next(2, 16); i++)
+                {
+                    builder.Append(rnd.Next(9));
+                }
+                return builder.ToString();
+            } else
+            {
+                builder.Append(SpamText.Text);
+                return builder.ToString();
             }
-            SendKeys.Send(builder.ToString());
-            SendKeys.Send("{Enter}");
         }
 
         protected override void WndProc(ref Message m)
