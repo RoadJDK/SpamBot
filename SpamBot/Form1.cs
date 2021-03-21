@@ -18,34 +18,56 @@ namespace SpamBot
         private Timer _myTimer;
 
         bool isActive = false;
+        bool twitchToggler = true;
 
         public SpamBot()
         {
             InitializeComponent();
             RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID, 0, (int)Keys.F11);
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            _myTimer = new Timer();
-            _myTimer.Interval = 100; // 1 millisecond
-            _myTimer.Tick += new EventHandler(MyTimer_Tick);
-            _myTimer.Start();
         }
 
         private void MyTimer_Tick(object sender, EventArgs e)
         {
-            if(isActive)
+            if (TwitchModeActive())
             {
-                StartSpaming();
+                TwitchSpammer();
+            }
+            else
+            {
+                StandardSpammer();
             }
         }
 
-        private void StartSpaming()
+        private void StandardSpammer()
         {
             var output = GetSpamInfo();
             SendKeys.Send(output);
+            SendKeys.Send("{Enter}");
+        }
+
+        private bool TwitchModeActive()
+        {
+            if (TwitchMode.CheckState == CheckState.Checked)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        private void TwitchSpammer()
+        {
+            var output = GetSpamInfo();
+            if (twitchToggler == true)
+            {
+                SendKeys.Send(output);
+                twitchToggler = false;
+            } else
+            {
+                SendKeys.Send(output + output);
+                twitchToggler = true;
+            }
             SendKeys.Send("{Enter}");
         }
 
@@ -63,7 +85,7 @@ namespace SpamBot
                 return builder.ToString();
             } else
             {
-                builder.Append(SpamText.Text);
+                builder.Append(SpamText.Text + " ");
                 return builder.ToString();
             }
         }
@@ -72,9 +94,36 @@ namespace SpamBot
         {
             if (m.Msg == 0x0312 && m.WParam.ToInt32() == MYACTION_HOTKEY_ID)
             {
+                if (!isActive)
+                {
+                    _myTimer = new Timer();
+                    if (GetDelayInfo() != 0)
+                    {
+                        _myTimer.Interval = GetDelayInfo();
+                    }
+                    else
+                    {
+                        _myTimer.Interval = 100; //Default 100ms
+                    }
+                    if (TwitchModeActive())
+                    {
+                        _myTimer.Interval = 1000; //Default 100ms
+                    }
+                    _myTimer.Tick += new EventHandler(MyTimer_Tick);
+                    _myTimer.Start();
+                }
+                else
+                {
+                    _myTimer.Stop();
+                }
                 toggle();
             }
             base.WndProc(ref m);
+        }
+
+        private int GetDelayInfo()
+        {
+            return Convert.ToInt32(Delay.Value);
         }
 
         private void toggle()

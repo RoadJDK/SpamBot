@@ -33,6 +33,12 @@
             this.Active = new System.Windows.Forms.Label();
             this.SpamText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.Delay = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TwitchMode = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -62,7 +68,7 @@
             this.Active.AutoSize = true;
             this.Active.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Active.ForeColor = System.Drawing.Color.Red;
-            this.Active.Location = new System.Drawing.Point(183, 290);
+            this.Active.Location = new System.Drawing.Point(186, 359);
             this.Active.Name = "Active";
             this.Active.Size = new System.Drawing.Size(69, 26);
             this.Active.TabIndex = 2;
@@ -87,12 +93,71 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "\"$\" for random numbers";
             // 
+            // Delay
+            // 
+            this.Delay.Location = new System.Drawing.Point(162, 320);
+            this.Delay.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.Delay.Name = "Delay";
+            this.Delay.Size = new System.Drawing.Size(126, 20);
+            this.Delay.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(180, 290);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Delay: (ms)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(199, 174);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 17);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Text:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(345, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 17);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Twitch-Mode:";
+            // 
+            // TwitchMode
+            // 
+            this.TwitchMode.AutoSize = true;
+            this.TwitchMode.Location = new System.Drawing.Point(443, 17);
+            this.TwitchMode.Name = "TwitchMode";
+            this.TwitchMode.Size = new System.Drawing.Size(15, 14);
+            this.TwitchMode.TabIndex = 10;
+            this.TwitchMode.UseVisualStyleBackColor = true;
+            // 
             // SpamBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(476, 424);
+            this.Controls.Add(this.TwitchMode);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Delay);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SpamText);
             this.Controls.Add(this.Active);
@@ -101,7 +166,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.Name = "SpamBot";
             this.Text = "SpamBot";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.Delay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,6 +179,11 @@
         private System.Windows.Forms.Label Active;
         private System.Windows.Forms.TextBox SpamText;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown Delay;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox TwitchMode;
     }
 }
 
